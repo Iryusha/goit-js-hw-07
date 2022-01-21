@@ -3,7 +3,7 @@ import { galleryItems } from './gallery-items.js';
 // Change code below this line
 const galleryList = document.querySelector('.gallery')
 
-galleryList.addEventListener('click', onGaleryContainerElClick)
+galleryList.addEventListener('click', onGalleryList)
 
 const galleryMark = createGalleryMark(galleryItems)
 galleryList.insertAdjacentHTML('beforeend', galleryMark)
@@ -23,34 +23,34 @@ function createGalleryMark(items) {
     })
         .join('');
 }
-function onGaleryContainerElClick(event) {
-  event.preventDefault();
-  const item = event.target.dataset.source;
-  const instanse = basicLightbox.create(`<img src = '${item}'>`);
-  instanse.show();
-}
-
-// function onGalleryList(event) {
-// 	event.preventDefault()
-
-// 	for (let i = 0; i < galleryItems.length; i += 1) {
-//         if (event.target.dataset.source === galleryItems[i].original) {
- 
-//             const createLightBox = basicLightbox.create(`
-// 			<img src="${galleryItems[i].original}" alt="${galleryItems[i].description}"/>
-// 						`)
-//             createLightBox.show()
-
-        //     document.addEventListener('keydown', closeEscape)
-
-        //     function closeEscape(event) {
-        //     	if (event.key === 'Escape') {
-        //     		createLightBox.close()
-        //     	}
-        // }
-	 	// }
-	// }
+// function onGaleryContainerElClick(event) {
+//   event.preventDefault();
+//   const item = event.target.dataset.source;
+//   const instanse = basicLightbox.create(`<img src = '${item}'>`);
+//   instanse.show();
 // }
+
+function onGalleryList(event) {
+	event.preventDefault()
+
+	for (let i = 0; i < galleryItems.length; i += 1) {
+        if (event.target.dataset.source === galleryItems[i].original) {
+ 
+            const createLightBox = basicLightbox.create(`
+			<img src="${galleryItems[i].original}" alt="${galleryItems[i].description}"/>
+						`)
+            createLightBox.show()
+
+            document.addEventListener('keydown', closeEscape)
+
+            function closeEscape(event) {
+            	if (event.key === 'Escape') {
+            		createLightBox.close()
+            	}
+        }
+	 	}
+	}
+}
 
 // console.log(galleryItems);
 
